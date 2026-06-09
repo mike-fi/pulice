@@ -1,0 +1,20 @@
+[project]
+name = "static-website"
+version = "0.1.0"
+description = "Pulice example: Static website hosting with S3 + CloudFront"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pulice",
+    "pulumi-aws>=7.15.0",
+]
+
+[project.scripts]
+static-website = "static_website.cli:main"
+
+[tool.uv.sources]
+pulice = { workspace = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

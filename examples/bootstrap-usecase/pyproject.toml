@@ -1,0 +1,21 @@
+[project]
+name = "bootstrap-usecase"
+version = "0.1.0"
+description = "Pulice example: Bootstrap a GitHub repo with AWS CodeBuild self-hosted runners"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pulice[admin]",
+    "pulumi-aws>=7.15.0",
+    "pulumi-github>=6.6.0",
+]
+
+[project.scripts]
+example = "bootstrap_usecase.cli:main"
+
+[tool.uv.sources]
+pulice = { workspace = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

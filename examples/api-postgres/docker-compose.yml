@@ -1,0 +1,31 @@
+services:
+  api:
+    build: .
+    command: uvicorn postgres_infra.app:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    environment:
+      - PULICE_STATE_DIR=/data/pulice
+      - PULICE_TASK_BACKEND=huey
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN:-}
+      - AWS_REGION=${AWS_REGION:-eu-central-1}
+    volumes:
+      - pulice-state:/data/pulice
+
+  worker:
+    build: .
+    command: huey_consumer postgres_infra.worker.huey -w 2 -k process
+    environment:
+      - PULICE_STATE_DIR=/data/pulice
+      - PULICE_TASK_BACKEND=huey
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN:-}
+      - AWS_REGION=${AWS_REGION:-eu-central-1}
+    volumes:
+      - pulice-state:/data/pulice
+
+volumes:
+  pulice-state:

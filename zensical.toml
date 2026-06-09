@@ -1,0 +1,52 @@
+[project]
+site_name = "Pulice"
+site_description = "A framework for managing infrastructure-as-code components with tenant isolation, async execution, and pluggable backends."
+
+[project.theme]
+variant = "modern"
+palette = [
+    { media = "(prefers-color-scheme)", scheme = "default", primary = "indigo", accent = "indigo", toggle = { icon = "lucide/sun-moon", name = "Switch to light mode" } },
+    { media = "(prefers-color-scheme: light)", scheme = "default", primary = "indigo", accent = "indigo", toggle = { icon = "lucide/sun", name = "Switch to dark mode" } },
+    { media = "(prefers-color-scheme: dark)", scheme = "slate", primary = "indigo", accent = "orange", toggle = { icon = "lucide/moon-star", name = "Switch to system preference" } },
+]
+features = [
+    "navigation.tabs",
+    "navigation.sections",
+    "navigation.top",
+    "search.suggest",
+    "search.highlight",
+    "content.code.copy",
+    "content.tabs.link",
+]
+
+[project.theme.icon]
+repo = "fontawesome/brands/github"
+
+[project.plugins]
+search = {}
+
+[project.plugins.mkdocstrings.handlers.python]
+paths = ["src"]
+
+[project.plugins.mkdocstrings.handlers.python.options]
+show_source = true
+show_root_heading = true
+members_order = "source"
+docstring_style = "google"
+merge_init_into_class = true
+show_signature_annotations = true
+
+[project.markdown_extensions.admonition]
+
+[project.markdown_extensions.pymdownx.highlight]
+anchor_linenums = true
+
+[project.markdown_extensions.pymdownx.superfences]
+
+[project.markdown_extensions.pymdownx.tabbed]
+alternate_style = true
+
+[project.markdown_extensions.pymdownx.details]
+
+[project.markdown_extensions.toc]
+permalink = true

@@ -1,0 +1,17 @@
+[project]
+name = "api-postgres"
+version = "0.1.0"
+description = "Pulice example: HTTP API managing RDS PostgreSQL via Docker Compose"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pulice[api]",
+    "pulumi-aws>=7.15.0",
+]
+
+[tool.uv.sources]
+pulice = { workspace = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

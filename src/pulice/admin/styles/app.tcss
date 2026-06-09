@@ -1,0 +1,39 @@
+/* Global layout for Pulice Admin TUI */
+
+Screen {
+    background: $background;
+}
+
+#main {
+    height: 1fr;
+}
+
+#tabs {
+    height: 1fr;
+}
+
+Header {
+    dock: top;
+}
+
+Footer {
+    dock: bottom;
+}
+
+TabbedContent {
+    height: 1fr;
+}
+
+TabPane {
+    height: 1fr;
+    padding: 0;
+}
+
+DataTable {
+    height: 1fr;
+}
+
+DataTable > .datatable--cursor {
+    background: $primary;
+    color: $text;
+}

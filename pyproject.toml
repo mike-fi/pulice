@@ -1,0 +1,113 @@
+[project]
+name = "pulice"
+version = "0.1.0"
+description = "A framework for managing infrastructure-as-code components via Pulumi with tenant isolation, async execution, and pluggable backends."
+readme = "README.md"
+authors = [
+    {name = "mk.fshr"},
+]
+license = "MIT"
+requires-python = ">=3.13"
+dependencies = [
+    "pulumi>=3.215.0",
+    "pydantic>=2.12.5",
+    "typer>=0.21.1",
+]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Topic :: infrastructure",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3 :: Only",
+    "License :: OSI Approved :: MIT License",
+]
+
+[tool.pyrefly]
+project-includes = ["src"]
+project-excludes = ["**/*venv/**/*", "examples/", "tests/"]
+
+[project.optional-dependencies]
+aws = ["pulumi-aws>=7.15.0"]
+api = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.30.0",
+    "huey>=2.5.0",
+]
+celery = [
+    "celery[redis]>=5.4.0",
+]
+admin = [
+    "textual>=3.0.0",
+    "textual-serve>=1.1.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.4",
+    "pytest-cov>=6.0.0",
+    "fastapi>=0.115.0",
+    "huey>=2.5.0",
+    "httpx>=0.28.0",
+]
+docs = [
+    "zensical>=0.0.37",
+    "mkdocstrings[python]>=0.29.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.9.21,<0.10.0"]
+build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = ["-ra", "-q"]
+testpaths = ["tests"]
+
+[tool.uv.workspace]
+members = [
+    "examples/bootstrap-usecase",
+    "examples/static-website",
+    "examples/api-postgres",
+    "examples/kubernetes-deploy",
+]
+
+[tool.ruff]
+line-length = 100
+indent-width = 4
+
+[tool.ruff.format]
+quote-style = "single"
+indent-style = "space"
+docstring-code-format = true
+exclude = [
+    "build",
+    "dist",
+    ".eggs",
+]
+
+[tool.ruff.lint]
+ignore = [
+    "N801", # class names should use CapWords convention (class names)
+    "N812", # lowercase imported as non-lowercase (pyspark.sql functions as F)
+    "N818"  # Exception name should have Error suffix
+]
+
+select = [
+    "E",
+    "F",
+    "N",
+    "W",
+    "I001", # isort configuration for ruff "--profile", "black"
+]
+
+
+[tool.ruff.lint.isort.sections]
+typing = ["typing"]
+
+
+[tool.ruff.lint.isort]
+no-lines-before = ["future", "standard-library", "third-party", "first-party", "local-folder", "typing"]
+section-order = ["future", "standard-library", "third-party", "first-party", "local-folder", "typing"]
+
+[tool.bandit]
+skips = ["B601", "B608", "B101", "B110"] # B101 asserts used
+exclude_dirs = ["tests/", "examples/"]
