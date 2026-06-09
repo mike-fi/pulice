@@ -4,9 +4,14 @@ on:
   release:
     types:
       - created
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+jobs:
 
 jobs:
-  publish:
+  package:
     name: Publish release to pypi
     runs-on: ubuntu-latest
     environment: pypi
@@ -18,8 +23,26 @@ jobs:
         uses: astral-sh/setup-uv@v7
         with:
           # Install a specific version of uv.
-          version: 0.9.8
+          version: 0.11.19
       - name: Build & publish package
         run: |
           uv build
           uv publish
+  docs:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/configure-pages@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+      - run: pip install zensical
+      - run: zensical build --clean 
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+      - uses: actions/deploy-pages@v4
+        id: deployment
