@@ -15,7 +15,6 @@ dependencies = [
 ]
 classifiers = [
     "Intended Audience :: Developers",
-    "Topic :: infrastructure",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3 :: Only",
     "License :: OSI Approved :: MIT License",
