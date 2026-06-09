@@ -10,7 +10,6 @@ permissions:
   id-token: write
 jobs:
 
-jobs:
   package:
     name: Publish release to pypi
     runs-on: ubuntu-latest
