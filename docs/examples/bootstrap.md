@@ -66,4 +66,4 @@ jobs:
 
 ## Source
 
-See [`examples/bootstrap-usecase/`](https://github.com/your-org/pulice/tree/main/examples/bootstrap-usecase) for the full implementation.
+See [`examples/bootstrap-usecase/`](https://github.com/mike-fi/pulice/tree/main/examples/bootstrap-usecase) for the full implementation.

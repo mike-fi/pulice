@@ -87,4 +87,4 @@ This gives you an in-cluster Pulice API that can manage namespaces via HTTP.
 
 ## Source
 
-See [`examples/kubernetes-deploy/`](https://github.com/your-org/pulice/tree/main/examples/kubernetes-deploy) for the full implementation.
+See [`examples/kubernetes-deploy/`](https://github.com/mike-fi/pulice/tree/main/examples/kubernetes-deploy) for the full implementation.

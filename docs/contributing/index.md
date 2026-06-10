@@ -6,7 +6,7 @@ Thank you for considering contributing to pulice! This guide covers how to set u
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/pulice.git
+git clone https://github.com/mike-fi/pulice.git
 cd pulice
 
 # Install with all development dependencies

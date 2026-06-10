@@ -77,4 +77,4 @@ Note: You'll need to create a Route53 record or DNS alias pointing to the CloudF
 
 ## Source
 
-See [`examples/static-website/`](https://github.com/your-org/pulice/tree/main/examples/static-website) for the full implementation.
+See [`examples/static-website/`](https://github.com/mike-fi/pulice/tree/main/examples/static-website) for the full implementation.

@@ -102,4 +102,4 @@ docker compose down -v  # also removes the state volume
 
 ## Source
 
-See [`examples/api-postgres/`](https://github.com/your-org/pulice/tree/main/examples/api-postgres) for the full implementation.
+See [`examples/api-postgres/`](https://github.com/mike-fi/pulice/tree/main/examples/api-postgres) for the full implementation.
